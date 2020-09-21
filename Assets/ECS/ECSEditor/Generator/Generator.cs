@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using UnityEditor;
 
 namespace ME.ECSEditor {
@@ -151,7 +152,7 @@ namespace ME.ECSEditor {
             var itemStr2 = Generator.CONTENT_ITEM2;
             var itemStr3 = Generator.CONTENT_ITEM3;
 
-            var splittedMain = dir.Split('/');
+            var splittedMain = dir.Split(Path.DirectorySeparatorChar);
             var asmNameMain = splittedMain[splittedMain.Length - 1];
 
             var listEntities = new List<System.Type>();
@@ -169,7 +170,7 @@ namespace ME.ECSEditor {
                 var asmNamePath = System.IO.Path.GetDirectoryName(asmPath);
                 if (System.IO.Directory.Exists(asmNamePath) == false) continue;
 
-                var splitted = asmNamePath.Split('/');
+                var splitted = asmNamePath.Split(Path.DirectorySeparatorChar);
                 var asmName = splitted[splitted.Length - 1];
 
                 var assemblies = System.AppDomain.CurrentDomain.GetAssemblies();
